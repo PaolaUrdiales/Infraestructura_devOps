@@ -107,3 +107,56 @@ resource "aws_security_group" "actividad3_sg_web" {
 }
 
 
+#Creacion de instancias
+# jump Server
+resource "aws_instance" "actividad3_jump" {
+  ami                    = "ami-053b0d53c279acc90"
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.actividad3_subred_publica.id
+  vpc_security_group_ids = [aws_security_group.actividad3_sg_jump.id]
+  key_name               = "vockey"
+
+  tags = {
+    Name = "actividad3-jump"
+  }
+}
+
+#instancia WS 1
+resource "aws_instance" "actividad3_web1" {
+  ami                    = "ami-053b0d53c279acc90"
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.actividad3_subred_publica.id
+  vpc_security_group_ids = [aws_security_group.actividad3_sg_web.id]
+  key_name               = "vockey"
+
+  tags = {
+    Name = "actividad3-web1"
+  }
+}
+
+#instancia WS 2
+resource "aws_instance" "actividad3_web2" {
+  ami                    = "ami-053b0d53c279acc90"
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.actividad3_subred_publica.id
+  vpc_security_group_ids = [aws_security_group.actividad3_sg_web.id]
+  key_name               = "vockey"
+
+  tags = {
+    Name = "actividad3-web2"
+  }
+}
+
+#instancia WS 3
+resource "aws_instance" "actividad3_web3" {
+  ami                    = "ami-053b0d53c279acc90"
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.actividad3_subred_publica.id
+  vpc_security_group_ids = [aws_security_group.actividad3_sg_web.id]
+  key_name               = "vockey"
+
+  tags = {
+    Name = "actividad3-web3"
+  }
+}
+
