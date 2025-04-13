@@ -60,7 +60,7 @@ resource "aws_security_group" "actividad3_sg_jump" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["187.161.143.158/32"] # mi IP
+    cidr_blocks = ["0.0.0.0/0"] # todo el internet
   }
 
   egress {
