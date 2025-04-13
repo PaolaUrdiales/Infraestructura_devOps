@@ -49,3 +49,59 @@ resource "aws_route_table_association" "actividad3_asociacion_subred" {
   subnet_id      = aws_subnet.actividad3_subred_publica.id
   route_table_id = aws_route_table.actividad3_publica.id
 }
+
+#Creacion grupo de seguridad para Jump Server
+resource "aws_security_group" "actividad3_sg_jump" {
+  name        = "actividad3_sg_jump"
+  description = "Permite conexion por ssh"
+  vpc_id      = aws_vpc.actividad3_vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # todo el internet
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "actividad3-sg-jump"
+  }
+}
+#Creacion de grupo de seguridad Web server
+resource "aws_security_group" "actividad3_sg_web" {
+  name        = "actividad3_sg_web"
+  description = "Permite trafico de http desde internet y ssh desde Jump Server"
+  vpc_id      = aws_vpc.actividad3_vpc.id
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    security_groups = [aws_security_group.actividad3_sg_jump.id]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "actividad3-sg-web"
+  }
+}
