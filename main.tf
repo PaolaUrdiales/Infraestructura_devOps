@@ -4,7 +4,11 @@ provider "aws" {
 
 # VPC
 resource "aws_vpc" "actividad3_vpc" {
+<<<<<<< HEAD
   cidr_block           = "10.10.0.0/20"
+=======
+  cidr_block           = "10.10.0.0/20" #IP del diagrama
+>>>>>>> 3795fada46dd5f065ad0ab9b16e6d4e03c7bccee
   enable_dns_support   = true
   enable_dns_hostnames = true
 
@@ -16,7 +20,11 @@ resource "aws_vpc" "actividad3_vpc" {
 # Subred publica
 resource "aws_subnet" "actividad3_subred_publica" {
   vpc_id                  = aws_vpc.actividad3_vpc.id
+<<<<<<< HEAD
   cidr_block              = "10.10.0.0/24"
+=======
+  cidr_block              = "10.10.0.0/24" #IP del diagrama
+>>>>>>> 3795fada46dd5f065ad0ab9b16e6d4e03c7bccee
   map_public_ip_on_launch = true
   availability_zone       = "us-east-1a"
 
@@ -105,8 +113,11 @@ resource "aws_security_group" "actividad3_sg_web" {
     Name = "actividad3-sg-web"
   }
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3795fada46dd5f065ad0ab9b16e6d4e03c7bccee
 #Creacion de instancias
 # jump Server
 resource "aws_instance" "actividad3_jump" {
@@ -158,5 +169,9 @@ resource "aws_instance" "actividad3_web3" {
   tags = {
     Name = "actividad3-web3"
   }
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> 3795fada46dd5f065ad0ab9b16e6d4e03c7bccee

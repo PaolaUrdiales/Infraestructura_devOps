@@ -4,13 +4,23 @@ import subprocess
  
 
 def run(cmd):
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3795fada46dd5f065ad0ab9b16e6d4e03c7bccee
     print(f"Ejecutando: {cmd}")
     subprocess.run(cmd, shell=True, check=True)
 
  
 
 def instalar_apache():
+<<<<<<< HEAD
     # Detectar distro para usar el gestor correcto
+=======
+
+    # Detectar distro para usar el gestor correcto
+
+>>>>>>> 3795fada46dd5f065ad0ab9b16e6d4e03c7bccee
     if os.path.exists("/etc/debian_version"):
         run("sudo apt update")
         run("sudo apt install -y apache2")
@@ -40,6 +50,10 @@ def crear_pagina():
     </body>
     </html>
     """
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3795fada46dd5f065ad0ab9b16e6d4e03c7bccee
     with open("/tmp/index.html", "w", encoding="utf-8") as f:
         f.write(html)
     run("sudo mv /tmp/index.html /var/www/html/index.html")
