@@ -17,3 +17,9 @@ Ramas Creadas:
 - Rama Dev: En la que se desarrollo todo el archivo main.tf y el archivo setup_webserver.py
 - Rama Qa: En la que se ejecutó el main.tf desde Cloud9, solo en esta rama se hizo terraform apply
 - Rama Main (la principal): En donde se alojan todos los archivos funcionando correctamente
+
+Proyecto creado con ayuda de:
+VSCODE
+CLOUD9
+AWS
+GitHub
